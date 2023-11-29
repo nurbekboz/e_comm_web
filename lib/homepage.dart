@@ -4,6 +4,7 @@ import 'dart:ui';
 // import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
+import 'package:fhm_globsl/bottombar/firmalar.dart';
 
 import 'package:fhm_globsl/destek.dart';
 import 'package:fhm_globsl/gizlilikpolitikasi.dart';
@@ -18,6 +19,8 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'bottombar/anasayfa.dart';
+import 'bottombar/ayarlar.dart';
+import 'bottombar/bakiye.dart';
 
 
 class HomeNavigator extends StatefulWidget {
@@ -52,10 +55,10 @@ class _DarkLightThemeState extends State<DarkLightTheme> with SingleTickerProvid
   GlobalKey bottomNavigationKey = GlobalKey();
   int _currentindex = 0;
   final tabs = [
-    // Anasayfa(),
-    // Firmalar(),
-    // Bakiye(),
-    // Ayarlar(),
+    Anasayfa(),
+    Firmalar(),
+    Bakiye(),
+    Ayarlar(),
   ];
 
   void initState() {
