@@ -21,14 +21,14 @@ class _GizlililikPolitikasiState extends State<GizlililikPolitikasi> with Automa
       onPageFinished: (String url) {},
       onWebResourceError: (WebResourceError error) {},
       onNavigationRequest: (NavigationRequest request) {
-        if (request.url.startsWith('https://trendmedyam.com/gizlilik-sozlesmesi/')) {
+        if (request.url.startsWith('https://www.mavikus.com.tr/store/gizlilik-ilkeleri')) {
           return NavigationDecision.prevent;
         }
         return NavigationDecision.navigate;
       },
     ),
   )
-  ..loadRequest(Uri.parse('https://trendmedyam.com/gizlilik-sozlesmesi/'));
+  ..loadRequest(Uri.parse('https://www.mavikus.com.tr/store/gizlilik-ilkeleri'));
   @override
   bool get wantKeepAlive => widget.keepAlive;
   @override

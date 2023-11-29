@@ -49,7 +49,6 @@ class _AnasayfaState extends State<Anasayfa> with AutomaticKeepAliveClientMixin 
     return Scaffold(
       body: WebViewWidget(
         controller: controller,
-        
       ),
     );
   }

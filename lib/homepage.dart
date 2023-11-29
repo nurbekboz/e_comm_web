@@ -1,12 +1,10 @@
-import 'dart:ffi';
 import 'dart:io';
 import 'dart:ui';
 
 // import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
-import 'package:fhm_globsl/bottombar/bakiye.dart';
-import 'package:fhm_globsl/bottombar/destek.dart';
+
 import 'package:fhm_globsl/destek.dart';
 import 'package:fhm_globsl/gizlilikpolitikasi.dart';
 import 'package:fhm_globsl/hakk%C4%B1nda.dart';
@@ -16,15 +14,11 @@ import 'package:fhm_globsl/service/push_notification_service.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
-import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
-import 'package:fwfh_webview/fwfh_webview.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'bottombar/anasayfa.dart';
-import 'bottombar/ayarlar.dart';
-import 'bottombar/firmalar.dart';
-import 'bottombar/isilani.dart';
+
 
 class HomeNavigator extends StatefulWidget {
   _HomeNavigatorState createState() => _HomeNavigatorState();
@@ -58,10 +52,10 @@ class _DarkLightThemeState extends State<DarkLightTheme> with SingleTickerProvid
   GlobalKey bottomNavigationKey = GlobalKey();
   int _currentindex = 0;
   final tabs = [
-    Anasayfa(),
-    Firmalar(),
-    Bakiye(),
-    Ayarlar(),
+    // Anasayfa(),
+    // Firmalar(),
+    // Bakiye(),
+    // Ayarlar(),
   ];
 
   void initState() {
@@ -77,43 +71,36 @@ class _DarkLightThemeState extends State<DarkLightTheme> with SingleTickerProvid
         key: widget._scaffoldKey,
         extendBodyBehindAppBar: false,
         endDrawer: _drawer(context),
-        body: SizedBox(
-          width: double.infinity,
-          child: HtmlWidget(
-            '<iframe src="https://www.mavikus.com.tr/store/"></iframe>',
-            factoryBuilder: () => MaviKus(),
-          ),
-        ),
-        // body: Consumer<NetworkStatus>(builder: (context, data, child) {
-        //   return data == NetworkStatus.Online
-        //       ? tabs[currentPage]
-        //       : const Center(
-        //           child: Column(
-        //             mainAxisAlignment: MainAxisAlignment.center,
-        //             children: [
-        //               Icon(
-        //                 Icons.wifi_off,
-        //                 color: Colors.white70,
-        //                 size: 36,
-        //               ),
-        //               SizedBox(
-        //                 height: 8,
-        //               ),
-        //               Text(
-        //                 "Check your internet connection!",
-        //                 style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600, color: Colors.white70),
-        //               ),
-        //             ],
-        //           ),
-        //         );
-        // }),
+        body: Consumer<NetworkStatus>(builder: (context, data, child) {
+          return data == NetworkStatus.Online
+              ? tabs[currentPage]
+              : const Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.wifi_off,
+                        color: Colors.white70,
+                        size: 36,
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        "Check your internet connection!",
+                        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600, color: Colors.white70),
+                      ),
+                    ],
+                  ),
+                );
+        }),
         floatingActionButton: GestureDetector(
           onTap: () {
-            _urlAc('https://api.whatsapp.com/send/?phone=+905312259507&text&type=phone_number&app_absent=0');
+            _urlAc('https://api.whatsapp.com/send/?phone=905312259507&text&type=phone_number&app_absent=0');
           },
           child: Padding(
             padding: const EdgeInsets.only(
-              bottom: 50.0,
+              bottom:50.0,
             ),
             child: Container(
               height: 40,
@@ -578,8 +565,4 @@ class _DarkLightThemeState extends State<DarkLightTheme> with SingleTickerProvid
       debugPrint('gönderdiğin linki açamıyorum');
     }
   }
-}
-
-class MaviKus extends WidgetFactory with WebViewFactory {
-
 }
